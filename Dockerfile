@@ -6,6 +6,6 @@ RUN npm i
 RUN npm cache clean --force
 RUN npm run build
 
-EXPOSE 3000 
+EXPOSE 4173 
 
 CMD ["npm", "run", "preview"]
