@@ -7,4 +7,4 @@ services:
     image: clerk-app
     container_name: clerk-app
     ports:
-      - ${OUTPUT_PORT}:4173
+      - "${PORT:-3666}:4173"  # Changed to 8080 to avoid port conflicts
