@@ -1,0 +1,10 @@
+version: "3.5"
+
+services:
+  nuxt:
+    build:
+      context: .
+    image: clerk-app
+    container_name: clerk-app
+    ports:
+      - ${OUTPUT_PORT}:3000
