@@ -6,6 +6,24 @@ const fileManagerURL = import.meta.env.FILE_MANAGER_URL;
 const clerk = new Clerk(clerkPubKey);
 await clerk.load();
 
+const createFileManagerLink = () => {
+  const container = document.getElementById("app");
+
+  // Create a new anchor element
+  const link = document.createElement("a");
+
+  // Set the href and text content for the link
+  link.href = fileManagerURL;
+  link.textContent = "File Manager";
+
+  // Optionally, set other attributes (e.g., open in a new tab)
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+
+  // Append the link to the div
+  container.appendChild(link);
+};
+
 if (clerk.user) {
   document.getElementById("app").innerHTML = `
     <div id="user-button"></div>
@@ -24,21 +42,3 @@ if (clerk.user) {
 
   clerk.mountSignIn(signInDiv);
 }
-
-const createFileManagerLink = () => {
-  const container = document.getElementById("app");
-
-  // Create a new anchor element
-  const link = document.createElement("a");
-
-  // Set the href and text content for the link
-  link.href = fileManagerURL;
-  link.textContent = "File Manager";
-
-  // Optionally, set other attributes (e.g., open in a new tab)
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-
-  // Append the link to the div
-  container.appendChild(link);
-};
