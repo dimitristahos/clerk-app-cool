@@ -1,10 +1,16 @@
-version: "3.5"
+version: "3.8"
 
 services:
-  nuxt:
+  vite_app:
     build:
       context: .
-    image: clerk-app
-    container_name: clerk-app
+      dockerfile: Dockerfile
     ports:
-      - "${PORT:-3866}:4174"  # Changed to 8080 to avoid port conflicts
+      - "${PORT:-3866}:4174" # Changed to 8080 to avoid port conflicts
+    volumes:
+      # Development hot-reload volume mounts
+      - ./src:/app/src
+      - ./public:/app/public
+    environment:
+      - NODE_ENV=development
+      # Add other environment variables as needed
