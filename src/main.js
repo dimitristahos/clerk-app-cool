@@ -6,14 +6,16 @@ const fileManagerURL = import.meta.env.VITE_FILE_MANAGER_URL;
 const clerk = new Clerk(clerkPubKey);
 await clerk.load();
 
-const createFileManagerLink = () => {
+const createFileManagerLink = async () => {
   const container = document.getElementById("app");
 
   // Create a new anchor element
   const link = document.createElement("a");
 
+  const token = await clerk.session.getToken();
+
   // Set the href and text content for the link
-  link.href = fileManagerURL;
+  link.href = `${fileManagerURL}?token=${token}`;
   link.textContent = "File Manager";
 
   // Optionally, set other attributes (e.g., open in a new tab)
