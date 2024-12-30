@@ -1,7 +1,7 @@
 import { Clerk } from "@clerk/clerk-js";
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-const fileManagerURL = import.meta.env.FILE_MANAGER_URL;
+const fileManagerURL = import.meta.env.VITE_FILE_MANAGER_URL;
 
 const clerk = new Clerk(clerkPubKey);
 await clerk.load();
