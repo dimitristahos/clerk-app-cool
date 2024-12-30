@@ -1,4 +1,3 @@
-# Dockerfile
 FROM node:18-alpine as build
 
 WORKDIR /app
@@ -21,8 +20,8 @@ FROM nginx:alpine
 # Copy built assets from build stage
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Copy nginx config if you have custom configuration
-# COPY nginx.conf /etc/nginx/nginx.conf
+# Copy nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
